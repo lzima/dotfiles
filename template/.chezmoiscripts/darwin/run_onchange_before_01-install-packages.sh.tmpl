@@ -1,0 +1,49 @@
+#!/bin/bash
+
+set -eufo pipefail
+
+{{ $brews := list
+     "colima"
+     "docker"
+     "docker-buildx"
+     "docker-compose"
+     "kubernetes-cli"
+     "btop"
+     "tree"
+     "watch"
+     "zsh"
+     "curl"
+     "dockutil"
+     "fd"
+     "age"
+     "ffmpeg"
+     "vim"
+     "gh"
+     "pv"
+     "git"
+     "git-lfs"
+     "gnu-units"
+     "gnupg"
+     "go"
+     "jq"
+     "yq"
+     "nvim"
+     "ncdu"
+     "shellcheck"
+     "tmux"
+     "asdf"
+     "wget"
+     "xz"
+     "fzf" -}}
+{{ $casks := list
+     "openlens"
+     "iterm2" -}}
+
+/opt/homebrew/bin/brew bundle -f --no-lock --file=/dev/stdin <<EOF
+{{ range ($brews | sortAlpha | uniq) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range ($casks | sortAlpha | uniq) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF

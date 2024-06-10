@@ -1,0 +1,47 @@
+{{- writeToStdout "Hello, please set following inputs:\n - email, firstname, surname\n\n" -}}
+{{ $email := promptStringOnce . "email" "What is your email address" }}
+{{ $firstName := promptStringOnce . "firstName" "What is your first name" }}
+{{ $familyName := promptStringOnce . "familyName" "What is your surname" }}
+{{ $githubUsername := promptStringOnce . "githubUsername" "What is your github username" }}
+
+
+{{/* work around unreliable hostname on darwin */}}
+{{- $hostname := .chezmoi.hostname -}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $hostname = "cmgx-osx-{{ slice .firstName  0 1}}{{ slice .familyName  0 4}}" -}}
+{{- end -}}
+
+[data]
+    email = {{ $email | quote }}
+    firstName = {{ $firstName | quote }}
+    familyName = {{ $familyName | quote }}
+    githubUsername = {{ $githubUsername | quote }}
+    hostname = {{ $hostname | quote }}
+    zshPlugins = [
+        "zsh-syntax-highlighting",
+        "zsh-autosuggestions",
+        "per-directory-history",
+        "vi-mode",
+        "git",
+        "colored-man-pages",
+        "colorize",
+        "pip",
+        "aliases",
+        "asdf",
+        "docker",
+        "docker-compose",
+        "fd",
+        "fzf",
+        "gh",
+        "iterm2",
+        "kubectl",
+{{- if eq .chezmoi.os "darwin" -}}
+        "brew",
+{{-   end -}}
+        "python"
+    ]
+
+progress = true
+
+[github]
+    refreshPeriod = "12h"
