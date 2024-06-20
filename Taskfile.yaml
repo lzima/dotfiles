@@ -1,0 +1,15 @@
+version: '3'
+
+tasks:
+  test:
+    desc: Run test
+    cmd: |
+      current_branch=$(git rev-parse --abbrev-ref HEAD)
+      docker run --network=host \
+      -v $(python3 -m certifi):/etc/certs/cacert.crt \
+      -e SSL_CERT_FILE=/etc/certs/cacert.crt \
+      -e NONINTERACTIVE=1 \
+      -e HOMEBREW_CURLRC=1 \
+      --rm -it sickcodes/docker-osx \
+      bash -c 'echo insecure >> ~/.curlrc; sh -c "$(curl -fsLS get.chezmoi.io)"; ./bin/chezmoi init --branch "$current_branch" --apply --promptStringOnce email=test@example.com lzima'
+
