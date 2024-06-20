@@ -39,7 +39,7 @@ set -eufo pipefail
      "openlens"
      "iterm2" -}}
 
-/opt/homebrew/bin/brew bundle -f --no-lock --file=/dev/stdin <<EOF
+brew bundle -f --no-lock --file=/dev/stdin <<EOF
 {{ range ($brews | sortAlpha | uniq) -}}
 brew "{{ . }}"
 {{ end -}}
