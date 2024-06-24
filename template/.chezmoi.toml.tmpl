@@ -1,8 +1,8 @@
 {{- writeToStdout "Hello, please set following inputs:\n - email, firstname, surname\n\n" -}}
-{{ $email := promptStringOnce . "email" "What is your email address" }}
-{{ $firstName := promptStringOnce . "firstName" "What is your first name" }}
-{{ $familyName := promptStringOnce . "familyName" "What is your surname" }}
-{{ $githubUsername := promptStringOnce . "githubUsername" "What is your github username" }}
+{{ $email := promptString "email" -}}
+{{ $firstName := promptString "firstName" }}
+{{ $familyName := promptString "familyName" }}
+{{ $githubUsername := promptString "githubUsername"  }}
 
 
 {{/* work around unreliable hostname on darwin */}}
