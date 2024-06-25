@@ -43,7 +43,16 @@ if ! [ -z "$CHZ_GITHUBUSERNAME" ]; then
   prompt="$prompt --promptString githubUsername=$CHZ_GITHUBUSERNAME"
 fi
 
-sudo xcode-select --install
+
+# install brew
+if ! xcode-select -p > /dev/null; then
+  echo "Go to Settings->General->Software Update, and click on Update button"
+  echo "Command line tools for Xcode"
+  sudo xcode-select --install
+
+  open "x-apple.systempreferences:com.apple.preferences.softwareupdate"
+  read input "Press enter to continue after you install update"
+fi
 
 sh -c "$(curl -fsLS https://git.io/chezmoi)" -- -b ~/.local/bin \
 init --one-shot --force --apply $prompt lzima
