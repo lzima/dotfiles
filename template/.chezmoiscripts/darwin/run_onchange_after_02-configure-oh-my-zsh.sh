@@ -3,7 +3,7 @@
 set -eufo pipefail
 
 if ! [ -d "$HOME/.oh-my-zsh" ]; then
-  RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true
+  KEEP_ZSHRC=yes RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true
 else
   echo "Skipping .oh-my-zsh, already installed."
 fi
