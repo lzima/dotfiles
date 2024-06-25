@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # download company portal from url https://go.microsoft.com/fwlink/?linkid=853070
 if ! [ -d "/Applications/Company Portal.app" ]; then
