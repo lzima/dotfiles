@@ -51,7 +51,8 @@ if ! xcode-select -p > /dev/null; then
   sudo xcode-select --install
 
   open "x-apple.systempreferences:com.apple.preferences.softwareupdate"
-  read input "Press enter to continue after you install update"
+  echo "Press enter to continue after you install update"
+  read
 fi
 
 sh -c "$(curl -fsLS https://git.io/chezmoi)" -- -b ~/.local/bin \
