@@ -2,6 +2,8 @@
 
 # download company portal from url https://go.microsoft.com/fwlink/?linkid=853070
 if ! [ -d "/Applications/Company Portal.app" ]; then
+  # get in PATH wget
+  source ~/.zshrc
   echo "Company Portal wasn't found on your computer"
   echo "Downloading Company Portal from Microsoft"
   bash -c 'wget -O /tmp/CompanyPortal.pkg https://go.microsoft.com/fwlink/?linkid=853070'

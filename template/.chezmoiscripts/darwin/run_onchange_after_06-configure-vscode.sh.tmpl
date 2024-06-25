@@ -1,7 +1,9 @@
 #!/bin/bash
 
 set -eufo pipefail
+# get in PATH vscode
+source ~/.zshrc
 
 {{- range .vscodeExtensions }}
-bash -c 'code --force --install-extension {{ . }}'
+code --force --install-extension {{ . }}
 {{ end -}}
