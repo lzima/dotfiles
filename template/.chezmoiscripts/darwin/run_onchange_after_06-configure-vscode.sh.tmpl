@@ -1,12 +1,7 @@
-{{ if and (eq .chezmoi.os "darwin" "linux") (not .headless) -}}
-
-# Install Visual Studio Code extensions
 #!/bin/bash
 
 set -eufo pipefail
 
 {{- range .vscodeExtensions }}
 code --force --install-extension {{ . }}
-{{ end -}}
-
 {{ end -}}
