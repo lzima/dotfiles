@@ -43,5 +43,7 @@ if ! [ -z "$CHZ_GITHUBUSERNAME" ]; then
   prompt="$prompt --promptString githubUsername=$CHZ_GITHUBUSERNAME"
 fi
 
+xcode-select --install
+
 sh -c "$(curl -fsLS https://git.io/chezmoi)" -- -b ~/.local/bin \
 init --one-shot --force --apply $prompt lzima
