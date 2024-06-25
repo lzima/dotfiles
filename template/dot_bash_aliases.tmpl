@@ -30,10 +30,10 @@ dstop() { docker stop $(docker ps -a -q); }
 dbu() { docker build -t=$1 .; }
 
 # Show all alias related docker
-dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
+{{`dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }`}}
 
 # Bash into running container
-dbash() { docker exec -it $(docker ps -aqf "name=$1") bash; }
+{{`dbash() { docker exec -it $(docker ps -aqf "name=$1") bash; }`}}
 
 # show docker log
 alias dlog="docker logs"
@@ -118,7 +118,7 @@ alias k="kubectl"
 # ------------------------------------
 # GIT
 # ------------------------------------
-alias gitrmlocal='git fetch -p && for branch in $(git branch -vv | grep '"': gone]' | awk '"'{print $1}'"'"'); do git branch -D $branch; done'
+{{`alias gitrmlocal='git fetch -p && for branch in $(git branch -vv | grep '"': gone]' | awk '"'{print $1}'"'"'); do git branch -D $branch; done'`}}
 alias g=git
 alias gnp="git --no-pager"
 
