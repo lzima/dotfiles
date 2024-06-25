@@ -33,7 +33,7 @@ declare -a add_apps=(
   "/Applications/iTerm.app"
   "/System/Applications/Notes.app"
   "/System/Applications/Reminders.app"
-  "/Applications/Google Chrome.app"
+  # "/Applications/Google Chrome.app" # not installed yet -> will be installed with Company Portal
 )
 
 for app in "${add_apps[@]}"; do
