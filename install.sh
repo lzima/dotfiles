@@ -46,13 +46,13 @@ fi
 
 # install brew
 if ! xcode-select -p > /dev/null; then
-  echo "Go to Settings->General->Software Update, and click on Update button"
-  echo "Command line tools for Xcode"
+  echo "Navigate to Settings -> General -> Software Update, and click on the 'Update' button."
+  echo "Installing command line tools for Xcode."
   sudo xcode-select --install
   sleep 5
 
   open "x-apple.systempreferences:com.apple.preferences.softwareupdate"
-  echo "Press enter to continue after you install update"
+  echo "Press 'Enter' to continue after the update is installed."
   read
 fi
 
