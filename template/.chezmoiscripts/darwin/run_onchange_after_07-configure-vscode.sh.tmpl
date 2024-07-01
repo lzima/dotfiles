@@ -1,11 +1,9 @@
 {{ if eq .role "developer" -}}
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 set -eufo pipefail
-# get in PATH vscode
-source ~/.zshrc
 
 {{- range .vscodeExtensions }}
-code --force --install-extension {{ . }}
+/opt/homebrew/bin/code --force --install-extension {{ . }}
 {{ end -}}
 {{ end -}}
