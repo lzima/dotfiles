@@ -1,4 +1,4 @@
-{{- if eq .role "developer" -}}
+{{ if eq .role "developer" -}}
 #!/usr/bin/env bash
 
 set -eufo pipefail
@@ -8,4 +8,4 @@ source ~/.zshrc
 {{- range .vscodeExtensions }}
 code --force --install-extension {{ . }}
 {{ end -}}
-{{- end -}}
+{{ end -}}
