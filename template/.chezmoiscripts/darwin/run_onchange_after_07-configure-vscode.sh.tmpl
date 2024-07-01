@@ -1,5 +1,5 @@
-{{ if eq .role "developer" -}}
-#!/usr/bin/env zsh
+{{ if stat /opt/homebrew/bin/code -}}
+#!/usr/bin/env bash
 
 set -eufo pipefail
 
