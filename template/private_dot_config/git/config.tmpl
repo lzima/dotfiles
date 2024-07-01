@@ -1,3 +1,4 @@
+{{ if eq .role "developer" -}}
 [user]
 	name = {{ .firstName }} {{ .familyName }}
 	email = {{ .email }}
@@ -13,3 +14,4 @@
 	helper = !{{ $ghPath }} auth git-credential
 {{- end }}
 {{/* vim: set filetype=gitconfig: */}}
+{{ end -}}

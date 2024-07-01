@@ -2,8 +2,15 @@
 {{ $email := promptString "email" -}}
 {{ $firstName := promptString "firstName" }}
 {{ $familyName := promptString "familyName" }}
-{{ $githubUsername := promptString "githubUsername"  }}
-
+{{ $isDeveloper := promptBoolOnce . "isDeveloper" "Are you developer? y/n " }}
+{{ $role := "user" }}
+{{- if $isDeveloper -}}
+{{-   $role = "developer" -}}
+{{- end -}}
+{{- $githubUsername := "" -}}
+{{- if $isDeveloper -}}
+{{-   $githubUsername = promptString "githubUsername" -}}
+{{- end -}}
 
 {{/* work around unreliable hostname on darwin */}}
 {{- $hostname := .chezmoi.hostname -}}
@@ -12,6 +19,7 @@
 {{- end -}}
 
 [data]
+    role = {{ $role | quote }}
     email = {{ $email | quote }}
     firstName = {{ $firstName | quote }}
     familyName = {{ $familyName | quote }}
@@ -20,6 +28,7 @@
 
     # on this place can be changed the list of extensions
     vscodeExtensions = [
+{{- if $isDeveloper -}}
         "asvetliakov.vscode-neovim",
         "eamodio.gitlens",
         "EditorConfig.EditorConfig",
@@ -38,8 +47,10 @@
         "twpayne.vscode-testscript",
         "Tyriar.sort-lines",
         "yzhang.markdown-all-in-one"
+{{- end -}}
     ]
     zshPlugins = [
+{{- if $isDeveloper -}}
         "zsh-syntax-highlighting",
         "zsh-autosuggestions",
         "per-directory-history",
@@ -61,6 +72,7 @@
         "brew",
 {{-   end -}}
         "python"
+{{- end -}}
     ]
 
 progress = true

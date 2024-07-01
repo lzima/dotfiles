@@ -1,3 +1,4 @@
+{{ if eq .role "developer" -}}
 #!/usr/bin/env bash
 
 current_dir=$(pwd)
@@ -12,3 +13,4 @@ cd "$ssh_dir"
 if ! [ -f "$chezmoi_ssh_key" ]; then
     ssh-keygen -t ed25519 -C "{{ .email }}" -f "$chezmoi_ssh_key" -N '""'
 fi
+{{ end -}}

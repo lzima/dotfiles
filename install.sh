@@ -57,4 +57,4 @@ if ! xcode-select -p > /dev/null; then
 fi
 
 sh -c "$(curl -fsLS https://git.io/chezmoi)" -- -b ~/.local/bin \
-init --one-shot --force --apply $prompt lzima
+init --branch feature/dev_role --one-shot --force --apply $prompt lzima

@@ -3,17 +3,35 @@
 set -eufo pipefail
 
 {{ $brews := list
+     "zsh"
+     "curl"
+     "btop"
+     "tree"
+     "gnupg"
+     "ncdu"
+     "jq"
+     "yq"
+     "wget"
+     "fzf"
+     "dockutil"
+     "watch"
+     "fd"
+     "vim"
+     "pv"
+     "gnu-units"
+     "fzf" -}}
+{{ $casks := list
+     "iterm2" -}}
+
+# append two lists
+{{ if eq .role "developer" -}}
+{{ $devbrews := list
      "colima"
      "docker"
      "docker-buildx"
      "docker-compose"
      "kubernetes-cli"
-     "btop"
-     "tree"
      "watch"
-     "zsh"
-     "curl"
-     "dockutil"
      "fd"
      "age"
      "ffmpeg"
@@ -23,22 +41,21 @@ set -eufo pipefail
      "git"
      "git-lfs"
      "gnu-units"
-     "gnupg"
      "go"
-     "jq"
-     "yq"
      "nvim"
-     "ncdu"
      "shellcheck"
      "tmux"
      "asdf"
-     "wget"
-     "xz"
-     "fzf" -}}
-{{ $casks := list
+     "xz" -}}
+# merge brew + devbrews
+{{ range ($devbrews | sortAlpha | uniq) -}}{{ $brews = append $brews . }}{{ end -}}
+{{ $devcasks := list
      "openlens"
-     "visual-studio-code"
-     "iterm2" -}}
+     "visual-studio-code" -}}
+{{ range ($devcasks | sortAlpha | uniq) -}}{{ $casks = append $casks . }}{{ end -}}
+{{ end -}}
+
+
 
 /opt/homebrew/bin/brew bundle -f --no-lock --file=/dev/stdin <<EOF
 {{ range ($brews | sortAlpha | uniq) -}}
