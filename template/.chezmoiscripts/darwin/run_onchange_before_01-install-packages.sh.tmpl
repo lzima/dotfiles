@@ -52,6 +52,7 @@ set -eufo pipefail
 {{ range ($devbrews | sortAlpha | uniq) -}}{{ $brews = append $brews . }}{{ end -}}
 {{ $devcasks := list
      "openlens"
+     "ollamac"
      "pycharm-ce" -}}
 {{ range ($devcasks | sortAlpha | uniq) -}}{{ $casks = append $casks . }}{{ end -}}
 {{ end -}}
