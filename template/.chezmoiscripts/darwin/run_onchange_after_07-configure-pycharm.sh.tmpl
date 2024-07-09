@@ -1,4 +1,4 @@
-{{ if stat "/opt/homebrew/bin/code" -}}
+{{ if eq .role "developer" -}}
 #!/usr/bin/env bash
 
 set -eufo pipefail
