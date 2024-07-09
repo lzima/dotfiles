@@ -31,6 +31,9 @@ declare -a add_apps=(
   "/System/Applications/System Settings.app"
   "/System/Applications/Utilities/Activity Monitor.app"
   "/Applications/iTerm.app"
+{{- if eq .ollama "yes" -}}
+  "/Applications/Ollamac.app"
+{{- end -}}
   "/Applications/Google Chrome.app"
   "/System/Applications/Notes.app"
   "/System/Applications/Reminders.app"
