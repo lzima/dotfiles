@@ -21,7 +21,7 @@ set -eufo pipefail
      "gnu-units"
      "fzf" -}}
 {{ $casks := list
-     "iterm2",
+     "iterm2"
      "google-chrome" -}}
 
 # append two lists
@@ -59,8 +59,7 @@ set -eufo pipefail
 
 # append ai tools to brews and casks
 {{ if eq .ollama "yes" -}}
-{{ $aibrews := list
-     "ollama" -}}
+{{ $aibrews := list "ollama" -}}
 # merge brew + devbrews
 {{ range ($aibrews | sortAlpha | uniq) -}}{{ $brews = append $brews . }}{{ end -}}
 {{ $aicasks := list

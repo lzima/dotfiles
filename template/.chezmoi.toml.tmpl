@@ -27,8 +27,8 @@
     familyName = {{ $familyName | quote }}
     githubUsername = {{ $githubUsername | quote }}
     hostname = {{ $hostname | quote }}
+    ollama = {{ $setupOllama | quote }}
 {{- if $setupOllama -}}
-    ollama = "yes"
     ollamaModels="llama3:8b,deepseek-coder,codellama"
 {{- end -}}
     # on this place can be changed the list of extensions
