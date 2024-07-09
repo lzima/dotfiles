@@ -57,7 +57,16 @@ set -eufo pipefail
 {{ range ($devcasks | sortAlpha | uniq) -}}{{ $casks = append $casks . }}{{ end -}}
 {{ end -}}
 
-
+# append ai tools to brews and casks
+{{ if eq .ollama "yes" -}}
+{{ $aibrews := list
+     "ollama" -}}
+# merge brew + devbrews
+{{ range ($aibrews | sortAlpha | uniq) -}}{{ $brews = append $brews . }}{{ end -}}
+{{ $aicasks := list
+     "ollamac" -}}
+{{ range ($aicasks | sortAlpha | uniq) -}}{{ $casks = append $casks . }}{{ end -}}
+{{ end -}}
 
 /opt/homebrew/bin/brew bundle -f --no-lock --file=/dev/stdin <<EOF
 {{ range ($brews | sortAlpha | uniq) -}}
