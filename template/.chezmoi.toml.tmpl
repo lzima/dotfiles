@@ -9,6 +9,7 @@
 {{- end -}}
 {{- $githubUsername := "" -}}
 {{- if $isDeveloper -}}
+{{-   $setupOllama := promptBoolOnce . "setupOllama" "Do you want setup ollama? y/n " -}}
 {{-   $githubUsername = promptString "githubUsername" -}}
 {{- end -}}
 
@@ -25,7 +26,10 @@
     familyName = {{ $familyName | quote }}
     githubUsername = {{ $githubUsername | quote }}
     hostname = {{ $hostname | quote }}
-
+{{- if $setupOllama -}}
+    ollama = "yes"
+    ollamaModels="llama3:8b,deepseek-coder,codellama"
+{{- end -}}
     # on this place can be changed the list of extensions
     pycharmExtensions = [
 {{- if $isDeveloper -}}
