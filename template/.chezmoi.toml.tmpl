@@ -4,6 +4,7 @@
 {{ $familyName := promptString "familyName" }}
 {{ $isDeveloper := promptBoolOnce . "isDeveloper" "Are you developer? y/n " }}
 {{ $role := "user" }}
+{{ $setupOllama := "" }}
 {{- if $isDeveloper -}}
 {{-   $role = "developer" -}}
 {{- end -}}
