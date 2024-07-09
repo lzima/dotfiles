@@ -51,7 +51,7 @@ set -eufo pipefail
 {{ range ($devbrews | sortAlpha | uniq) -}}{{ $brews = append $brews . }}{{ end -}}
 {{ $devcasks := list
      "openlens"
-     "visual-studio-code" -}}
+     "pycharm-ce" -}}
 {{ range ($devcasks | sortAlpha | uniq) -}}{{ $casks = append $casks . }}{{ end -}}
 {{ end -}}
 

@@ -27,26 +27,23 @@
     hostname = {{ $hostname | quote }}
 
     # on this place can be changed the list of extensions
-    vscodeExtensions = [
+    pycharmExtensions = [
 {{- if $isDeveloper -}}
-        "asvetliakov.vscode-neovim",
-        "eamodio.gitlens",
-        "EditorConfig.EditorConfig",
-        "golang.go",
-        "jinliming2.vscode-go-template",
-        "ms-python.python",
-        "ms-vscode-remote.remote-containers",
-        "ms-vscode-remote.remote-ssh",
-        "ms-vscode-remote.remote-ssh-edit",
-        "ms-vscode-remote.vscode-remote-extensionpack",
-        "ms-vscode.cpptools",
-        "redhat.vscode-yaml",
-        "stkb.rewrap",
-        "streetsidesoftware.code-spell-checker",
-        "tamasfe.even-better-toml",
-        "twpayne.vscode-testscript",
-        "Tyriar.sort-lines",
-        "yzhang.markdown-all-in-one"
+        "Docker",
+        "ru.adelf.idea.dotenv",
+        "net.seesharpsoft.intellij.plugins.csv",
+        "izhangzhihao.rainbow.brackets",
+        "mobi.hsz.idea.gitignore",
+        "dev.turingcomplete.intellijdevelopertoolsplugins",
+        "club.nutsoft.Github3Theme",
+        "org.jetbrains.plugins.go-template",
+        "com.intellij.kubernetes",
+        "some.awesome",
+        "de.ax.powermode",
+        "org.intellij.plugins.hcl",
+        "nl.crosscode.x509Certbuddy",
+        "dev.turingcomplete.intellijdevelopertoolsplugins",
+        "com.chuntung.plugin.gistsnippet"
 {{- end -}}
     ]
     zshPlugins = [

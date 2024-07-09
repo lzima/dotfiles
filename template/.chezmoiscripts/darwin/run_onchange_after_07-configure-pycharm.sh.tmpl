@@ -2,8 +2,7 @@
 #!/usr/bin/env bash
 
 set -eufo pipefail
-
-{{- range .vscodeExtensions }}
-/opt/homebrew/bin/code --force --install-extension {{ . }}
+{{- range .pycharmExtensions }}
+open -na "PyCharm.app" --args installPlugins {{ . }}
 {{ end -}}
 {{ end -}}
