@@ -52,14 +52,14 @@ set -eufo pipefail
 {{ range ($devbrews | sortAlpha | uniq) -}}{{ $brews = append $brews . }}{{ end -}}
 {{ $devcasks := list
      "openlens"
-     "ollamac"
      "pycharm-ce" -}}
 {{ range ($devcasks | sortAlpha | uniq) -}}{{ $casks = append $casks . }}{{ end -}}
 {{ end -}}
 
 # append ai tools to brews and casks
 {{ if eq .ollama "yes" -}}
-{{ $aibrews := list "ollama" -}}
+{{ $aibrews := list
+    "ollama" -}}
 # merge brew + devbrews
 {{ range ($aibrews | sortAlpha | uniq) -}}{{ $brews = append $brews . }}{{ end -}}
 {{ $aicasks := list
