@@ -3,4 +3,9 @@
 
 # ollama pull models
 echo "ollama pull XYZ"
+ollamaModels=$(echo "{{.ollamaModels}}" | tr ',' ' ')
+
+for model in $ollamaModels; do
+    /opt/homebrew/bin/ollama pull "$model"
+done
 {{ end -}}
