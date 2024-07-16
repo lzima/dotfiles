@@ -100,3 +100,9 @@ sudo defaults write com.apple.messageshelper.MessageController SOInputLineSettin
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
+
+
+sudo defaults write io.tailscale.ipn.macsys SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
+
+# tailscale start on login
+defaults write io.tailscale.ipn.macsys TailscaleStartOnLogin -int 1
