@@ -1,9 +1,0 @@
-{{ if stat "/opt/homebrew/bin/code" -}}
-#!/usr/bin/env bash
-
-set -eufo pipefail
-
-{{- range .vscodeExtensions }}
-/opt/homebrew/bin/code --force --install-extension {{ . }}
-{{ end -}}
-{{ end -}}

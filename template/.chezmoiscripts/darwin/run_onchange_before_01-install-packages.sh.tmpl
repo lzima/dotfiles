@@ -21,7 +21,8 @@ set -eufo pipefail
      "gnu-units"
      "fzf" -}}
 {{ $casks := list
-     "iterm2" -}}
+     "iterm2"
+     "google-chrome" -}}
 
 # append two lists
 {{ if eq .role "developer" -}}
@@ -51,11 +52,20 @@ set -eufo pipefail
 {{ range ($devbrews | sortAlpha | uniq) -}}{{ $brews = append $brews . }}{{ end -}}
 {{ $devcasks := list
      "openlens"
-     "visual-studio-code" -}}
+     "pycharm-ce" -}}
 {{ range ($devcasks | sortAlpha | uniq) -}}{{ $casks = append $casks . }}{{ end -}}
 {{ end -}}
 
-
+# append ai tools to brews and casks
+{{ if eq .ollama "yes" -}}
+{{ $aibrews := list
+    "ollama" -}}
+# merge brew + devbrews
+{{ range ($aibrews | sortAlpha | uniq) -}}{{ $brews = append $brews . }}{{ end -}}
+{{ $aicasks := list
+     "ollamac" -}}
+{{ range ($aicasks | sortAlpha | uniq) -}}{{ $casks = append $casks . }}{{ end -}}
+{{ end -}}
 
 /opt/homebrew/bin/brew bundle -f --no-lock --file=/dev/stdin <<EOF
 {{ range ($brews | sortAlpha | uniq) -}}
